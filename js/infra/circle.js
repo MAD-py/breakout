@@ -76,6 +76,7 @@ export default class Circle extends Vertice {
     }
 
     draw(ctx) {
+        ctx.beginPath();
         ctx.strokeStyle = this.#colorBorder;
         ctx.fillStyle = this.#colorFiller;
         ctx.arc(super.x, super.y, this.#radius, 0, 2 * Math.PI);
@@ -112,7 +113,6 @@ export default class Circle extends Vertice {
 
         collision = this.#collision(userBar);
         if (collision) {
-             this.#speedX *= -1;
              this.#speedY *= -1;
         }
     }

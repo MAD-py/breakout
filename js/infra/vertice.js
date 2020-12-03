@@ -35,6 +35,14 @@ export default class Vertice {
         ) {
             this.#x += vx;
             this.#y += vy;
+        } else if (new_x > canvas.width) {
+            this.#x = canvas.width;
+        } else if (new_x < 0) {
+            this.#x = 0;
+        } else if (new_y > canvas.height) {
+            this.#y = canvas.height;
+        } else if (new_y < 0) {
+            this.#y = 0;
         }
     }
 }
