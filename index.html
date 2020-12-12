@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breakout</title>
+</head>
+<body>
+
+  <header class="my-header">
+    <div class="title">
+      <h1 class="color-text" >Breakout</h1>
+    </div>
+  </header>
+
+  <main>
+    <div id="img" class="image container-img">
+      <div id="start" class="my-container">
+        <form>
+          <div class="form-group d-flex">
+            <label class="center-text color-text" for="name">
+              Name
+            </label>
+            <input 
+              id="name"
+              type="name"
+              class="form-control inputs"
+              placeholder="Enter your name"
+            >
+          </div>
+        </form>
+
+        <div class="d-flex">
+          <button class="btn btn-success btn-sm center-item start">
+            Start
+          </button>
+        </div>
+      </div>
+
+      <div id="canvas" class="empty">
+        <canvas 
+          id="board"
+          width="1500"
+          height="600"
+          style="margin: 10% auto; border: 2px solid black;"
+        ></canvas>
+      </div>
+    </div>
+  </main>
+
+  <footer class="page-footer font-small my-footer">
+    <div class="footer-copyright text-center py-3 color-text">© 2020 Copyright:
+      <a class="color-text" href="https://github.com/MAD-py/breakout"> Mateo y Valentina</a>
+    </div>
+  </footer>
+
+</body>
+
+<script type="module" src="./js/main.js"></script>
+</html>

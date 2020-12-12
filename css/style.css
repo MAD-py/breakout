@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 0;
+    font-family: 'Russo One', sans-serif;
+}
+
+main {
+    min-height: 93vh !important;
+}
+
+.center-text {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+}
+
+.center-item {
+    display: block;
+    align-self: center;
+    margin: 25px auto;
+}
+
+.inputs {
+    width: 35% !important;
+    margin: 0 auto;
+    border: 1px solid black !important;
+}
+
+.title {
+    text-align: center;
+}
+
+.container-img {
+    height: 922px;
+    display: flex;
+    justify-content: center;
+}
+
+.image {
+    background-image: url("../img/fondo.png");
+}
+
+.my-container {
+    width: 100%;
+    margin-top: 300px;
+}
+
+.start {
+    font-size: 20px;
+    width: 100px;
+    height: 50px;
+}
+
+.my-header {
+    background-color: #c83739 !important;
+}
+
+.color-text {
+    color: rgb(255, 255, 255);
+}
+
+.my-footer {
+    font-size: 20px;
+    height: 30px;
+    background-color: #c83739 !important;
+}
+
+.empty {
+    display: none;
+}
