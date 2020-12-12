@@ -1,13 +1,16 @@
 import User from "./infra/user.js";
 import { level1 } from "./levels.js";
-import { drawBricks } from "./utils.js"
+import { drawBricks, goBall } from "./utils.js";
 
 var user;
+var userBar;
+var ball;
 var bricks;
 var ctx;
 var canvas;
 
 let start = document.getElementsByTagName("button")[0];
+let body = document.getElementsByTagName("body")[0];
 
 
 start.addEventListener("click", () => {
@@ -26,12 +29,30 @@ start.addEventListener("click", () => {
     canvas = document.getElementById("board");
     ctx = canvas.getContext("2d");
 
-    bricks = level1();
+    [bricks, ball, userBar] = level1();
     window.requestAnimationFrame(goLevel);
 });
 
+
 const goLevel = () => {
-    drawBricks(bricks, ctx, canvas);
-    console.log(user)
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    drawBricks(bricks, ctx);
+    goBall(ball, bricks, userBar, ctx, canvas);
+    userBar.draw(ctx);
     window.requestAnimationFrame(goLevel);
 }
+
+
+body.addEventListener("keydown", (event) => {
+    let key = event.key;
+    switch (key) {
+        case "ArrowLeft":
+            userBar.move(canvas, -1);
+            break;
+        case "ArrowRight":
+            userBar.move(canvas, 1);
+            break;
+        default:
+            return
+    }
+});

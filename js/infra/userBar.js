@@ -1,4 +1,4 @@
-import Rectangle from "./rectangle";
+import Rectangle from "./rectangle.js";
 
 export default class UserBar extends Rectangle {
     #speed;
@@ -6,7 +6,7 @@ export default class UserBar extends Rectangle {
     constructor(colorFiller, colorBorder, isActive, width, height, x, y) {
         super(colorFiller, colorBorder, isActive, width, height, x, y);
         
-        this.#speed = 10;
+        this.#speed = 25;
     }
 
     get speed() {
@@ -17,7 +17,7 @@ export default class UserBar extends Rectangle {
         this.#speed = newSpeed;
     }
 
-    move(canvas) {
-        super.move(canvas, this.#speed, 0);
+    move(canvas, orientation) {
+        super.move(canvas, this.#speed * orientation, 0);
     }
 }

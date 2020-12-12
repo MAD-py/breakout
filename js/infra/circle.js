@@ -1,4 +1,4 @@
-import Vertice from "./vertice";
+import Vertice from "./vertice.js";
 
 
 export default class Circle extends Vertice {
@@ -66,10 +66,10 @@ export default class Circle extends Vertice {
             this.#speedX *= -1;
         }
         if (new_y >= canvas.height) {
-            this.#speedY *= -1;
-        } else if (new_y <= 0) {
-            this.#speedX = 0;
             this.#speedY = 0;
+            this.#speedX = 0;
+        } else if (new_y <= 0) {
+            this.#speedY *= -1;
         }
 
         super.move(canvas, this.#speedX, this.#speedY);
@@ -85,35 +85,61 @@ export default class Circle extends Vertice {
     }
 
     #collision(rectangle) {
-        let distX = Math.abs(super.x - rectangle.x - rectangle.width/2);
-        let distY = Math.abs(super.y - rectangle.y - rectangle.heigth/2);
-        
-        let dx = distX - rectangle.width/2;
-        let dy = distY - rectangle.heigth/2;
+        let rectanglePerimeterX = super.x;
+        if (rectanglePerimeterX < rectangle.x) {
+            rectanglePerimeterX = rectangle.x;
+        }
+        if (rectanglePerimeterX > rectangle.x + rectangle.width) {
+            rectanglePerimeterX = rectangle.x + rectangle.width;
+        }
 
-        if (
-            distY <= (rectangle.heigth/2) ||
-            distX <= (rectangle.width/2) ||
-            (dx * dx + dy * dy <= (this.#r * this.#r))
-        ) {
+        let rectanglePerimeterY = super.y;
+        if (rectanglePerimeterY < rectangle.y) {
+            rectanglePerimeterY = rectangle.y;
+        }
+        if (rectanglePerimeterY > rectangle.y + rectangle.height) {
+            rectanglePerimeterY = rectangle.y + rectangle.height;
+        }
+
+        let distance = Math.sqrt(
+            (super.x - rectanglePerimeterX)**2 + (super.y - rectanglePerimeterY)**2
+        );
+
+        if (distance < this.#radius) {
             return true;
         }
-        return false;
+        return false
     }
 
     collisions(bricks, userBar) {
         let collision;
 
-        for (brick in bricks) {
-            collision = this.#collision(brick);
-            if (collision) {
-                brick.isActive = false;
+        for (let brick of bricks) {
+            if (brick.isActive) {
+                collision = this.#collision(brick);
+                if (collision) {
+                    brick.isActive = false;
+                    if (super.x >= brick.x && super.x < brick.x + brick.width) {
+                        this.#speedY *= -1;
+                    }
+                    else {
+                        this.#speedX *= -1;
+                    }
+                    break;
+                }
             }
+            
         }
 
         collision = this.#collision(userBar);
         if (collision) {
-             this.#speedY *= -1;
+            if (super.x >= userBar.x && super.x < userBar.x + userBar.width) {
+                this.#speedY *= -1;
+            }
+            else {
+                this.#speedX *= -1;
+                this.#speedY *= -1;
+            }
         }
     }
 }
