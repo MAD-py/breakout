@@ -1,4 +1,4 @@
-import Vertice from "./vertice";
+import Vertice from "./vertice.js";
 
 export default class Rectangle extends Vertice {
     #colorFiller;
@@ -59,9 +59,14 @@ export default class Rectangle extends Vertice {
 
     draw(ctx) {
         ctx.beginPath();
-        ctx.strokeStyle = this.#colorBorder;
-        ctx.fillStyle = this.#colorFiller;
         ctx.rect(super.x, super.y, this.#width, this.#height);
+        ctx.fillStyle = this.#colorFiller;
+        ctx.fill();
+
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = this.#colorBorder;
+        ctx.stroke();
+        
         ctx.closePath();
     }
 
