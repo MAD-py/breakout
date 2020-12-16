@@ -23,20 +23,19 @@ export default class Vertice {
         this.#y = y;
     }
 
-    move(canvas, vx, vy) {
+    move(canvas, vx, vy, width) {
         let new_x = this.#x + vx;
         let new_y = this.#y + vy;
-
         if (
-            new_x <= canvas.width &&
+            new_x + width <= canvas.width &&
             new_x >= 0 && 
             new_y <= canvas.height &&
             new_y >= 0
         ) {
             this.#x += vx;
             this.#y += vy;
-        } else if (new_x > canvas.width) {
-            this.#x = canvas.width;
+        } else if (new_x + width > canvas.width) {
+            this.#x = canvas.width - width;
         } else if (new_x < 0) {
             this.#x = 0;
         } else if (new_y > canvas.height) {

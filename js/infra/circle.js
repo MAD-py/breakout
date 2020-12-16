@@ -62,17 +62,17 @@ export default class Circle extends Vertice {
         let new_x = super.x + this.#speedX;
         let new_y = super.y + this.#speedY;
 
-        if (new_x >= canvas.width || new_x <= 0) {
+        if (new_x + this.#radius >= canvas.width || new_x - this.#radius <= 0) {
             this.#speedX *= -1;
         }
-        if (new_y >= canvas.height) {
+        if (new_y + this.#radius >= canvas.height) {
             this.#speedY = 0;
             this.#speedX = 0;
-        } else if (new_y <= 0) {
+        } else if (new_y - this.#radius <= 0) {
             this.#speedY *= -1;
         }
 
-        super.move(canvas, this.#speedX, this.#speedY);
+        super.move(canvas, this.#speedX, this.#speedY, this.#radius);
     }
 
     draw(ctx) {
@@ -111,7 +111,7 @@ export default class Circle extends Vertice {
         return false
     }
 
-    collisions(bricks, userBar) {
+    collisions(bricks, userBar, user) {
         let collision;
 
         for (let brick of bricks) {
@@ -119,6 +119,8 @@ export default class Circle extends Vertice {
                 collision = this.#collision(brick);
                 if (collision) {
                     brick.isActive = false;
+                    user.points += brick.points;
+
                     if (super.x >= brick.x && super.x < brick.x + brick.width) {
                         this.#speedY *= -1;
                     }
@@ -133,12 +135,29 @@ export default class Circle extends Vertice {
 
         collision = this.#collision(userBar);
         if (collision) {
-            if (super.x >= userBar.x && super.x < userBar.x + userBar.width) {
-                this.#speedY *= -1;
+            if (this.#speedX > 0) {
+                if (super.x >= userBar.x && super.x < userBar.x + userBar.width/2){
+                    this.speedY *= -1;
+                    this.speedX *= -1;
+                }
+                else if (
+                    super.x >= userBar.x + userBar.width/2 && 
+                    super.x < userBar.x + userBar.width
+                ){
+                    this.speedY *= -1;
+                }
             }
             else {
-                this.#speedX *= -1;
-                this.#speedY *= -1;
+                if (
+                    super.x >= userBar.x + userBar.width/2 && 
+                    super.x < userBar.x + userBar.width
+                ){
+                    this.speedY *= -1;
+                    this.speedX *= -1;
+                }
+                else if (super.x >= userBar.x && super.x < userBar.x + userBar.width/2){
+                    this.speedY *= -1;
+                }
             }
         }
     }

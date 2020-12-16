@@ -6,7 +6,7 @@ export default class UserBar extends Rectangle {
     constructor(colorFiller, colorBorder, isActive, width, height, x, y) {
         super(colorFiller, colorBorder, isActive, width, height, x, y);
         
-        this.#speed = 25;
+        this.#speed = 35;
     }
 
     get speed() {
@@ -18,6 +18,6 @@ export default class UserBar extends Rectangle {
     }
 
     move(canvas, orientation) {
-        super.move(canvas, this.#speed * orientation, 0);
+        super.move(canvas, this.#speed * orientation, 0, super.width);
     }
 }

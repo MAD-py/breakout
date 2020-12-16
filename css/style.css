@@ -10,6 +10,21 @@ h1 {
     font-family: 'Russo One', sans-serif;
 }
 
+h3 {
+    margin: 0 !important;
+    width: 50%;
+    font-family: 'Russo One', sans-serif;
+    display: inline;
+}
+
+p {
+    margin: 0 !important;
+    width: 50%;
+    font-size: 30px;
+    font-family: 'Russo One', sans-serif;
+    display: inline;
+}
+
 main {
     min-height: 93vh !important;
 }
@@ -73,4 +88,14 @@ main {
 
 .empty {
     display: none;
+}
+
+.lives { 
+    text-align: right;
+}
+
+.my-alert {
+    font-size: 22px;
+    font-family: 'Russo One', sans-serif;
+    margin: auto 29%;
 }

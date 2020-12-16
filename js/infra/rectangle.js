@@ -70,7 +70,7 @@ export default class Rectangle extends Vertice {
         ctx.closePath();
     }
 
-    move(canvas, speedX, speedY) {
-        super.move(canvas, speedX, speedY);
+    move(canvas, speedX, speedY, width) {
+        super.move(canvas, speedX, speedY, width);
     }
 }
