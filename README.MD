@@ -1,6 +1,6 @@
 <h1 aling="center">Breakout</h1>
 
-Este proyecto requiere de la extension Live Server para correr los codigo.
+Este proyecto requiere de la extensión Live Server para correr los codigo.
 ---
 ## Members
 
