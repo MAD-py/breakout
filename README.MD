@@ -13,4 +13,5 @@
 This project requires the Live Server extension to run the codes.
 
 Have a screen with 1920 X 1080 (16:9) resolution.
+
 ---
