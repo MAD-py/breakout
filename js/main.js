@@ -52,7 +52,7 @@ const goLevel = () => {
     if (user.lives > 0 && lvl !== 99999 ) {
         checkLive(ball, bricks, userBar, user);
         [ball, bricks, userBar, lvl] = checkLevel(ball, bricks, userBar, lvl);
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawBricks(bricks, ctx);
         goBall(ball, bricks, userBar, user, ctx, canvas);
         userBar.draw(ctx);

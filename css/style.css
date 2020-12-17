@@ -27,6 +27,9 @@ p {
 
 main {
     min-height: 93vh !important;
+    height:100%;
+    width:100%;
+    margin: 0px;
 }
 
 .center-text {
@@ -58,7 +61,7 @@ main {
 }
 
 .image {
-    background-image: url("../img/fondo.png");
+    background: url("../img/fondo.png");
 }
 
 .my-container {
